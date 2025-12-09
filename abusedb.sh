@@ -2,7 +2,7 @@
 
 PLIK=/tmp/abuseidb.txt
 MT_PLIK=/tmp/abuseidb.rsc
-IP_VER=4 #4 or 6
+IP_VER=4 #4 / 6 or 4,6
 MT_PASSWORD=your_password
 MT_PORT=ssh_tcp_port #22
 MT_LOGIN=user
