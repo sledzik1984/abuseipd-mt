@@ -1,12 +1,18 @@
-#!/bin/bash
+!/bin/bash
 
 PLIK=/tmp/abuseidb.txt
 MT_PLIK=/tmp/abuseidb.rsc
+IP_VER=4 #4 or 6
+MT_PASSWORD=your_password
+MT_PORT=ssh_tcp_port #22
+MT_LOGIN=user
+MT_HOST=1.2.3.4 #IP
+YOUR_API_KEY=abuseipdb-api-key
 
 rm -rf $PLIK
 rm -rf $MT_PLIK
 
-curl -G https://api.abuseipdb.com/api/v2/blacklist -d confidenceMinimum=90 -H "Key:$YOUR_API_KEY" -H "Accept: text/plain" -o $PLIK
+curl -G https://api.abuseipdb.com/api/v2/blacklist -d confidenceMinimum=90 -d ipVersion=$IP_VER -H "Key:$YOUR_API_KEY" -H "Accept: text/plain" -o $PLIK
 
 echo "/ip firewall address-list" >> $MT_PLIK
 echo "/ip firewall address-list remove [/ip firewall address-list find list=abuseidb]" >> $MT_PLIK
